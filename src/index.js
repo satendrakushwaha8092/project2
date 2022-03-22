@@ -1,24 +1,22 @@
 const express = require('express');
-var bodyParser = require('body-parser');
-
+const bodyParser = require('body-parser');
 const route = require('./routes/route.js');
-
+const { default: mongoose } = require('mongoose');
 const app = express();
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const mongoose = require('mongoose')
+    mongoose.connect("mongodb+srv://Satendrakushwaha:LR42b0N3nw0xCgNl@cluster0.pa1oj.mongodb.net/groupXDatabase?authSource=admin&replicaSet=atlas-c5v59u-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true", {    
+    
+useNewUrlParser: true
+})
+.then( () => console.log("MongoDb is connected"))
+.catch ( err => console.log(err) )
 
-mongoose.connect("", {useNewUrlParser: true})
-    .then(() => console.log('mongodb running on 27017'))
-    .catch(err => console.log(err))
+app.use('/', route);
 
-app.use('/functionup', route);
 
-app.listen(process.env.PORT || 3000, function() {
-	console.log('Express app running on port ' + (process.env.PORT || 3000))
+app.listen(process.env.PORT || 3000, function () {
+    console.log('Express app running on port ' + (process.env.PORT || 3000))
 });
-
-
