@@ -31,7 +31,7 @@
 - Return HTTP status 400 for an invalid request with a response body like [this](#error-response-structure)
 
 ### GET /functionup/collegeDetails
-- Returns the college details for the requested college (Expect a query parameter by the name `collegeName`. This is anabbreviated college name. For example `iith`)
+- Returns the college details for the requested college (Expect a query parameter by the name `collegeId`. This is anabbreviated college name. For example `iith`)
 - Returns the list of all interns who have applied for internship at this college.
 - The response structure should look like [this](#college-details)
 
